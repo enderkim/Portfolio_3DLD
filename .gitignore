@@ -1,0 +1,15 @@
+# Local development and generated archives
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+
+# Machine-specific and hosting connection state
+.openai/
+.sites-runtime/
+.codex/
+work/

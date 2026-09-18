@@ -1,0 +1,69 @@
+/* Code-plotted pixel Damascus and lightweight glass surfaces. */
+:root{color-scheme:dark;--bg:#101214;--ink:#e4e5e3;--muted:#b2b8bb;--line:rgba(217,228,233,.18);--accent:#b1c7cf;--surface:rgba(28,34,38,.65);--glass:rgba(22,28,32,.9);--tile-size:720px}
+body{isolation:isolate;background:var(--bg)}
+.damascus-backdrop{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1;background:#111518}
+.damascus-texture{position:absolute;top:0;left:0;display:block;image-rendering:pixelated}
+.damascus-backdrop::after{content:none}
+
+
+.site-header,.main-copy,#experience .section-content,#about .section-content,.work-caption,.template-note,dialog,.media-slot,.sample-label{background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none;background-image:linear-gradient(125deg,rgba(130,153,166,.08),rgba(18,24,28,.14));box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.site-header{border-width:0 0 1px;background:rgba(15,20,23,.78);gap:28px}
+.artist-name h1 span{color:var(--muted)}
+.site-header nav a:hover,.about-links a:hover{color:#fff}
+.site-header nav a[aria-current="location"]::after{content:"";height:1px;position:absolute;left:0;right:0;bottom:-7px;background:var(--accent)}
+.motion-toggle{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.04);color:var(--ink)}
+.motion-toggle:hover{background:rgba(255,255,255,.12)}
+.motion-toggle svg{width:14px;height:14px;fill:currentColor}.motion-toggle .play-symbol{display:none}.motion-toggle[aria-pressed="true"] .pause-symbol{display:none}.motion-toggle[aria-pressed="true"] .play-symbol{display:block}
+.skip{background:#e4e5e3;color:#101214}
+.main-hero{background:transparent;color:var(--ink)}
+#home .section-content{display:flex;align-items:center;justify-content:flex-start;padding:clamp(24px,5vw,80px) 0}
+#home .main-copy{position:relative;inset:auto;width:min(760px,82%);min-height:0;padding:clamp(28px,4.5vw,70px);border-radius:3px;justify-content:center;flex-shrink:0;background-color:rgba(19,25,29,.88)}
+.main-copy>p{color:#b9c7cf;font-size:12px;letter-spacing:2px}
+.main-copy h2{font-size:clamp(40px,5.2vw,78px);line-height:1.3;letter-spacing:-.055em;font-weight:400}
+.main-copy>a{border-color:rgba(217,228,233,.4)}.main-copy>a:hover{color:#fff}
+#work .work-caption{padding:12px 18px;border-radius:3px;align-items:center}
+#work .work-caption p{color:#d9e0e3}
+#work .template-note{padding:10px 14px;border-radius:3px}
+.project-visual{background:#1b2225;border:1px solid var(--line);border-radius:3px}
+.project-visual img{filter:none;transition:none}
+.project-button:hover img,.project-button:focus-visible img{filter:none;transform:none}.project-button:hover .project-visual,.project-button:focus-visible .project-visual{border-color:var(--accent)}
+.sample-label{color:#dce2e4;background:rgba(14,20,24,.65);border-radius:2px;box-shadow:none}
+.experience{border-top:0}
+#experience .section-content{padding:clamp(20px,2.6vw,38px);border-radius:3px}
+#experience .experience-columns{gap:clamp(24px,4vw,64px)}
+#experience .record .subrecord{margin-top:12px}
+#experience .section-bar>span{color:var(--muted)}
+#about .section-content{background-color:rgba(22,28,32,.9);border-radius:3px}
+.skills{border-color:var(--line)}
+.record a,.about-links a{color:#c4d7df}.record a:hover{color:#fff}
+footer{padding-top:10px;color:#d1d8db}
+dialog{background:rgba(18,24,28,.9);border-radius:5px}
+dialog::backdrop{background:rgba(5,9,12,.72);backdrop-filter:none}
+.dialog-top{background:rgba(18,24,28,.86);backdrop-filter:none}
+.dialog-top button:hover{background:rgba(255,255,255,.08)}
+.media-slot{border-radius:3px;background:rgba(73,88,98,.16);box-shadow:none}
+.section-content{scrollbar-color:#586772 transparent}
+@media(max-width:1100px){.site-header{gap:18px}.site-header nav{gap:24px}.artist-role{display:none}}
+@media(max-width:650px){
+ .site-header{display:grid;grid-template-columns:1fr auto;gap:16px;padding:18px 5%}
+ .site-header .artist-name h1{display:flex;align-items:baseline;gap:12px;font-size:24px}.artist-name h1 span{margin:0}
+ .site-header nav{grid-column:1/-1;grid-row:2;margin:0;justify-content:space-between;gap:18px}
+ .motion-toggle{grid-column:2;grid-row:1;width:32px;height:32px}
+ #home .section-content{padding:24px 0;align-items:center}
+ #home .main-copy{width:100%;padding:32px 24px}
+ #home .main-copy h2{font-size:clamp(32px,9vw,52px);margin-bottom:28px}
+ #home .main-copy>p{font-size:12px;max-width:none;letter-spacing:1px}
+ #work .work-caption{padding:10px 12px;gap:10px}
+ #experience .section-content{padding:22px 18px}
+ #experience .section-bar{align-items:start}
+ #about .section-content{padding:28px 22px}
+}
+@media(max-height:600px){#home .section-content{align-items:flex-start;padding:16px 0}#home .main-copy{padding:24px}#home .main-copy>p{margin-bottom:12px}#home .main-copy h2{font-size:36px;margin-bottom:16px}}
+@media(prefers-reduced-motion:reduce){.damascus-texture{animation:none;will-change:auto}}
+
+@media print{.damascus-backdrop,.motion-toggle{display:none}body{background:#fff;color:#111}.main-copy,#experience .section-content,#about .section-content,.work-caption,.template-note{background:#fff!important;color:#111;box-shadow:none;backdrop-filter:none}.site-header{background:#fff}}
+
+/* Tinted panels and edge highlights keep a frosted finish without live blur. */
+.site-header,.dialog-top,.sample-label{background-color:rgba(18,24,28,.96);-webkit-backdrop-filter:none;backdrop-filter:none}
+.scroll-motion-ready [data-scroll-section]{transition:opacity 160ms linear}
+@media(prefers-reduced-motion:reduce){.scroll-motion-ready [data-scroll-section]{transition:none}}

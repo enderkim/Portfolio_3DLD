@@ -1,0 +1,8 @@
+Use case: photorealistic-natural
+Asset type: square seamless repeating website background material texture, intended to drift slowly diagonally behind translucent glass UI.
+Primary request: Generate exactly one original dark Damascus steel texture with dense organic fine flowing contour ribbons, layered folded forged steel grain and predominantly diagonal flow. This is a completely NEW composition. The previously viewed reference is material inspiration only; do not reproduce its exact composition, pattern or geometry.
+Style/medium: realistic flat orthographic macro photograph of etched Damascus steel, entirely filled with material, no perspective or visible object.
+Composition/framing: square tile; intricate narrow flowing bands, fine nested organic contours, irregular natural folding; visually even texture density and brightness across the whole tile. Truly seamless and tileable on all four edges, continuous pattern when repeated horizontally and vertically.
+Lighting/mood: subdued contrast, flat even ambient lighting, dark and restrained.
+Color palette: deep charcoal and muted gunmetal grays only; no bright white or silver glare.
+Constraints: material texture only, edge-to-edge. No objects, blades, text, letters, logos, UI, border, vignette, spot lighting, shadows, strong highlights or gradients. Output one square image.

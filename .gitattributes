@@ -4,3 +4,8 @@
 *.js text eol=lf
 *.md text eol=lf
 *.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.mp4 binary

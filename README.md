@@ -1,29 +1,26 @@
-# ENDERKIM · 3D Art & Level Design Portfolio
+# ENDERKIM | Level Design & Environment Art
 
-김태연(ENDERKIM)의 3D 아트·레벨디자인 포트폴리오 정적 웹사이트입니다.
+**3D Environment Artist · Level Designer · Unreal Engine**
 
-## 프로젝트
+게임 속 공간을 통해 플레이어의 경험과 이야기를 설계하는 3D 환경 아티스트입니다.
 
-- OutBreak — Level Design / Environment Design / Unreal Engine 5
-- The Backrooms — Cinematic / Previs / Unreal Engine
-- Hallgrimskirkja — Environment Design / 3D Modeling
-- My Home — Interior Environment / Props / Materials
+Unreal Engine을 중심으로 레벨 디자인, 환경 구성, 라이팅, 머티리얼 및 시네마틱 작업을 진행하고 있습니다.
 
-## 로컬에서 확인하기
+블록아웃부터 최종 환경 구현까지, 게임플레이와 시각적 완성도를 함께 고려하는 작업을 지향합니다.
 
-`preview-site.cmd`를 실행한 뒤 표시되는 로컬 주소를 브라우저에서 엽니다. 별도의 패키지 설치는 필요하지 않습니다.
+## Featured Projects
 
-직접 수정할 파일과 이미지 교체 방법은 [`QUICK_EDIT.md`](QUICK_EDIT.md)에 정리되어 있습니다.
+- **OutBreak** — Level Design / Environment Design / Unreal Engine 5
+- **The Backrooms** — Cinematic / Previsualization / Unreal Engine
+- **Hallgrimskirkja** — Environment Design / Terrain / 3D Modeling
+- **My Home** — Interior Environment / Props / Materials
 
-## 주요 파일
+## Skills & Tools
 
-| 파일 | 용도 |
-| --- | --- |
-| `index.html` | 메인 구성, 경험, 소개 및 캐시 버전 |
-| `content.js` | 프로젝트 카드 정보 |
-| `outbreak.js` | 네 프로젝트 상세 페이지 내용 |
-| `outbreak.css` | 프로젝트 상세 페이지 레이아웃 |
-| `app.js` | 프로젝트 목록과 상세 페이지 동작 |
-| `style.css` | 기본 레이아웃과 반응형 스타일 |
-| `damascus.css` / `damascus.js` | 배경과 사이트 시각 효과 |
-| `assets/` | 프로젝트 이미지, GIF, 영상 자료 |
+Unreal Engine 5 · Unity · Blender · Maya · 3ds Max
+
+Level Design · Environment Art · Lighting · Materials · Blueprint · Cinematic
+
+---
+
+*Designing environments that shape player experiences.*

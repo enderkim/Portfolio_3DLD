@@ -75,6 +75,12 @@ window.renderCaseTemplateFacts=function({role,tools,team,output}){
  return `<div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(role)}</p><p><span>TOOLS</span>${safe(tools)}</p><p class="ob-team-fact"><span>TEAM</span>${safe(team)}</p><p><span>PERIOD / OUTPUT</span>${safe(output)}</p></div><nav class="ob-template-path" aria-label="공통 프로젝트 구성"><span>01 OVERVIEW</span><span>02 PLANNING</span><span>03 ITERATION</span><span>04 BREAKDOWN</span><span>05 IMPLEMENTATION</span><span>06 FINAL</span></nav>`;
 };
 
+window.renderProjectVideoLinks=function(links){
+ const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const cards=links.map((link)=>`<a class="ob-video-link" href="${safe(link.href)}" target="_blank" rel="noopener noreferrer"><span>${safe(link.label)}</span><strong>${safe(link.title)}</strong><small>YouTube에서 보기 <b aria-hidden="true">↗</b></small></a>`).join('');
+ return `<aside class="ob-video-footer" aria-label="프로젝트 전체 영상"><div class="ob-video-intro"><p class="ob-eyebrow">WATCH FULL PROJECT</p><h3>전체 영상으로<br>작업의 흐름을 확인하세요.</h3></div><div class="ob-video-links${links.length>1?' is-multiple':''}">${cards}</div></aside>`;
+};
+
 window.renderOutbreakCase=function(p){
  const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const slot=(tag,title,note)=>`<figure class="ob-image-slot ob-proof-slot" role="img" aria-label="${safe(title)} 이미지 삽입 영역"><span class="ob-slot-tag">${safe(tag)}</span><div><strong>${safe(title)}</strong><span>${safe(note)}</span></div><span class="ob-slot-foot">실제 작업 화면으로 교체</span></figure>`;
@@ -255,6 +261,7 @@ window.renderBackroomsCase=function(){
    <p class="ob-section-note">동일한 크기의 대표 프레임으로 공간 진입, 발견, 추격, 추락과 화면 왜곡의 흐름을 빠르게 확인할 수 있도록 구성했습니다.</p>
    <p class="br-credits"><span>CREDITS</span>Audio · Pixabay / KMY / KWJ &nbsp;·&nbsp; VHS Handicam Material · Unreal for VFX / Josh Toonen &nbsp;·&nbsp; Ceiling Material · Poly Haven</p>
   </section>
+  ${window.renderProjectVideoLinks([{label:'FULL FILM',title:'The Backrooms · Final Sequence',href:'https://youtu.be/ourOl1qyg4w'}])}
  </article>`;
 };
 
@@ -348,6 +355,7 @@ window.renderHallgrimCase=function(){
    </div>
    <p class="br-source-note"><span>COLLABORATION SCOPE</span>개인 작업: 교회 정면·텍스처·Scene A 블록아웃·건물 배치·Scene B 전체·A→B 전환 로직. 팀 제작 맥락: 교회 후면·동상·Scene A 세부 지형·식생·프롭·데칼.</p>
   </section>
+  ${window.renderProjectVideoLinks([{label:'PLAYABLE DEMO',title:'Hallgrímskirkja · 시연 영상',href:'https://youtu.be/Yt-dGSqtwKQ'},{label:'PROJECT PREVIEW',title:'Hallgrímskirkja · 프리뷰 영상',href:'https://youtu.be/ZvlUh8vAnJw'}])}
  </article>`;
 };
 
@@ -475,6 +483,7 @@ window.renderMyHomeCase=function(){
    </div>
    <p class="br-source-note"><span>ASSET + AI DISCLOSURE</span>Room 1의 일부 가구는 외부 에셋을 선정해 배치·재질 변경·최적화했습니다. 프로젝터와 턴테이블 일부 텍스처에는 AI 생성 이미지를 활용했으며, 외부 모델의 원형 제작은 개인 작업에 포함하지 않았습니다.</p>
   </section>
+  ${window.renderProjectVideoLinks([{label:'INTERACTION DEMO',title:'My Home · Project Video',href:'https://youtu.be/13jTKh6dV74'}])}
  </article>`;
 };
 

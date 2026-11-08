@@ -1,4 +1,4 @@
-# ENDERKIM | Level Design & Environment Art
+# PETA | Level Design & Environment Art
 
 **3D Environment Artist · Level Designer · Unreal Engine**
 

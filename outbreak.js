@@ -70,6 +70,11 @@ window.projectCaseStudies={
  }
 };
 
+window.renderCaseTemplateFacts=function({role,tools,team,output}){
+ const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ return `<div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(role)}</p><p><span>TOOLS</span>${safe(tools)}</p><p class="ob-team-fact"><span>TEAM</span>${safe(team)}</p><p><span>PERIOD / OUTPUT</span>${safe(output)}</p></div><nav class="ob-template-path" aria-label="공통 프로젝트 구성"><span>01 OVERVIEW</span><span>02 PLANNING</span><span>03 ITERATION</span><span>04 BREAKDOWN</span><span>05 IMPLEMENTATION</span><span>06 FINAL</span></nav>`;
+};
+
 window.renderOutbreakCase=function(p){
  const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const slot=(tag,title,note)=>`<figure class="ob-image-slot ob-proof-slot" role="img" aria-label="${safe(title)} 이미지 삽입 영역"><span class="ob-slot-tag">${safe(tag)}</span><div><strong>${safe(title)}</strong><span>${safe(note)}</span></div><span class="ob-slot-foot">실제 작업 화면으로 교체</span></figure>`;
@@ -78,11 +83,11 @@ window.renderOutbreakCase=function(p){
    <div class="ob-heading"><p class="case-kicker">PROJECT 01 / LEVEL DESIGN PORTFOLIO</p><h2 id="case-title">OUTBREAK</h2><p>Level Design · Environment Design · Unreal Engine 5</p></div>
    <figure class="ob-media ob-hero-media ob-hero-map"><img src="assets/outbreak-04-final-player.jpg" alt="폐허가 된 도심 도로를 통과하는 OutBreak 최종 플레이 화면" width="2560" height="1440"><figcaption>FINAL GAMEPLAY · 플레이어 시야에서 읽히는 이동 축과 도시 랜드마크</figcaption></figure>
    <div class="ob-hero-summary"><p>3인 스쿼드 익스트랙션 서바이벌 × 좀비 PvPvE</p><strong>소음이 좀비의 이동과 밀집도를 바꾸는 전장을 설계했습니다.</strong></div>
-   <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>Level Design · Direction · Optimization · UI</p><p><span>ENGINE</span>Unreal Engine 5</p><p><span>TEAM</span>Team Project</p><p><span>PERIOD</span>제작 기간 자료 추가 예정</p></div>
+   ${window.renderCaseTemplateFacts({role:'Level Design · Direction · Optimization · UI',tools:'Unreal Engine 5',team:'3인 팀 프로젝트',output:'Playable PvPvE Map · 기간 자료 추가 예정'})}
   </header>
 
   <section class="ob-section ob-goal-scope" aria-label="Goal and Role">
-   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Goal + Role</h3></div><p>플레이 경험과 담당 범위를 먼저 확인</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Overview + Contribution</h3></div><p>목표와 개인·팀 작업 범위</p></header>
    <div class="ob-design-goals">
     <article><span>01</span><h4>Exploration</h4><p>마트·주택가·아파트로 이어지는 플레이 구역을 탐색합니다.</p></article>
     <article><span>02</span><h4>Risk &amp; Reward</h4><p>제한 시간 안에 자원을 확보하고 탈출해야 전리품을 확정합니다.</p></article>
@@ -95,7 +100,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section" aria-label="Design Goals and World Map">
-   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Design Goals + World Map</h3></div><p>전체 구조 → 플레이 구현 구역</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Planning + World Map</h3></div><p>전체 구조 → 플레이 구현 구역</p></header>
    <div class="ob-map-stage">
     <img src="assets/outbreak-full-map.png" alt="OutBreak 전체 섬과 플레이 구현 구역" width="2000" height="2000" loading="lazy">
     <div class="ob-playable-zone"><span>PLAYABLE AREA</span></div>
@@ -105,7 +110,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section" aria-label="Reference to Blockout">
-   <header class="ob-section-head"><div><span class="ob-index">03</span><h3>Reference → Blockout</h3></div><p>에셋보다 플레이 경험을 먼저 설계</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">02B</span><h3>Planning + Blockout</h3></div><p>에셋보다 플레이 경험을 먼저 설계</p></header>
    <div class="ob-plan-blockout">
     <article><figure class="ob-media"><img src="assets/outbreak-map-planning.png" alt="전체 맵과 확대된 플레이 구역을 함께 보여주는 맵 설계 자료" width="1600" height="1600" loading="lazy"><figcaption>MAP PLAN · 전체 맵에서 구현 범위를 먼저 정의</figcaption></figure></article>
     <article><figure class="ob-media ob-blockout-evidence"><img src="assets/outbreak-01-blockout-overview.jpg" alt="건물 매스와 도로 구조가 보이는 OutBreak 블록아웃 전경" width="2560" height="1440" loading="lazy"><figcaption>BLOCKOUT · 건물 매스, 도로 연결, 고저차를 먼저 검증</figcaption></figure></article>
@@ -121,7 +126,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section" aria-label="Level Design Breakdown">
-   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>Level Design Breakdown</h3></div><p>Design Intent → Diagram / Image → Result</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Core Breakdown</h3></div><p>Level Design · Intent → Evidence → Result</p></header>
    <div class="ob-ld-breakdown">
     <article><div class="ob-break-intent"><p class="ob-eyebrow">PLAYER FLOW</p><h4>한 구역을 플레이 가능한 밀도로 확장</h4><p>마트·주택가·중앙 아파트·바리케이드를 하나의 구현 범위로 묶었습니다.</p></div><figure class="ob-media ob-map-detail ob-flow-map"><img src="assets/outbreak-05-topdown.jpg" alt="도로와 건물 배치를 수직으로 보여주는 OutBreak 플레이 구역 탑다운" width="2560" height="1440" loading="lazy"><figcaption>RESULT · 도로와 POI가 연결된 실제 플레이 구역</figcaption></figure></article>
     <article><div class="ob-break-intent"><p class="ob-eyebrow">PVE PRESSURE</p><h4>소음이 위협 지형을 바꾼다</h4><p>행동 소음이 쌓일수록 좀비 유도 강도가 높아지고, 이동과 밀집도가 달라집니다.</p></div><div class="ob-noise-diagram"><span>PLAYER ACTION</span><b>→</b><span>NOISE LEVEL</span><b>→</b><span>ZOMBIE MOVEMENT</span><b>→</b><span>ROUTE DECISION</span></div><p class="ob-result-line"><span>RESULT</span>교전 이후에도 다음 이동 경로를 다시 판단하게 만드는 PvE 압박</p></article>
@@ -130,7 +135,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section" aria-label="Environment and Before After">
-   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Environment + Before / After</h3></div><p>Blockout → Environment → Final</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05A</span><h3>Environment Implementation</h3></div><p>Blockout → Environment → Final</p></header>
    <div class="ob-env-compare">
     <div class="ob-env-row"><article><h4>Blockout Overview</h4><figure class="ob-media ob-compare-asset"><img src="assets/outbreak-01-blockout-overview.jpg" alt="OutBreak 블록아웃 전체 전경" width="2560" height="1440" loading="lazy"></figure></article><article><h4>Final Overview</h4><figure class="ob-media ob-compare-asset"><img src="assets/outbreak-02-final-overview.jpg" alt="OutBreak 최종 환경 전체 전경" width="2560" height="1440" loading="lazy"></figure></article></div>
     <div class="ob-env-row"><article><h4>Blockout Player View</h4><figure class="ob-media ob-compare-asset"><img src="assets/outbreak-03-blockout-player.jpg" alt="OutBreak 블록아웃 플레이어 시점" width="2560" height="1440" loading="lazy"></figure></article><article><h4>Final Player View</h4><figure class="ob-media ob-compare-asset"><img src="assets/outbreak-04-final-player.jpg" alt="OutBreak 최종 플레이어 시점" width="2560" height="1440" loading="lazy"></figure></article></div>
@@ -139,7 +144,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section ob-optimization" aria-label="Technical Optimization">
-   <header class="ob-section-head"><div><span class="ob-index">07</span><h3>Technical Optimization</h3></div><p>Problem → Analysis → Change → Result</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05B</span><h3>Technical Implementation</h3></div><p>Optimization · Problem → Change → Result</p></header>
    <div class="ob-opt-intro"><div><p class="ob-eyebrow">FOLIAGE SHADER &amp; WIND</p><h4>플레이 공간의 밀도를 유지하며 렌더링 비용을 줄였습니다.</h4></div><p>Masked·Two Sided 잎 카드의 중첩과 복합 Wind/WPO를 분리해 확인하고, 외형 손상이 적은 경량 바람으로 교체했습니다.</p></div>
    <div class="ob-opt-compare">
     <figure class="ob-media"><span>BEFORE</span><img src="assets/outbreak-15-shader-before.webp" alt="최적화 전 분홍색과 흰색 고비용 영역이 넓게 나타난 수목 Shader Complexity 화면" width="2560" height="1360" loading="lazy"><figcaption>복합 Wind/WPO와 잎 카드 중첩으로 수관 전반이 높은 비용 영역으로 표시</figcaption></figure>
@@ -154,7 +159,7 @@ window.renderOutbreakCase=function(p){
   </section>
 
   <section class="ob-section" aria-label="Final">
-   <header class="ob-section-head"><div><span class="ob-index">08</span><h3>Final Gameplay Gallery</h3></div><p>POI · Exterior · Interior</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Results</h3></div><p>Gameplay · POI · Exterior · Interior</p></header>
    <div class="ob-final-gallery">
     <figure class="ob-media ob-gallery-feature"><img src="assets/outbreak-07-factory-aerial.jpg" alt="배관과 설비, 수직 이동 구조가 보이는 OutBreak 공장 항공 전경" width="1740" height="979" loading="lazy"><figcaption><strong>FACTORY AERIAL</strong><span>설비와 수직 구조가 만든 공장 POI 전경</span></figcaption></figure>
     <div class="ob-gallery-pair"><figure class="ob-media"><img src="assets/outbreak-12-mart-exterior.jpg" alt="주차장과 입구가 보이는 OutBreak 마트 외부" width="2560" height="1440" loading="lazy"><figcaption><strong>MART EXTERIOR</strong><span>주차장을 거쳐 입구로 이어지는 외부 접근 공간</span></figcaption></figure><figure class="ob-media"><img src="assets/outbreak-06-barricade.jpg" alt="플레이 구역의 도로와 콘크리트 구조물이 보이는 OutBreak 바리케이드" width="1734" height="975" loading="lazy"><figcaption><strong>BARRICADE</strong><span>플레이 구역의 경계를 형성하는 도로 구조</span></figcaption></figure></div>
@@ -172,11 +177,11 @@ window.renderBackroomsCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 02 / REAL-TIME CINEMATIC</p><h2 id="case-title">THE BACKROOMS</h2><p>Found Footage Short Film · Unreal Engine</p></div>
    <figure class="ob-media ob-hero-media br-hero-media"><img src="assets/backrooms-01-hero.jpg" alt="노란 복도와 The Backrooms 타이틀이 보이는 최종 영상 프레임" width="1280" height="722"><figcaption>FINAL FILM · 반복되는 공간과 1인칭 카메라로 만든 파운드 푸티지</figcaption></figure>
    <div class="ob-hero-summary"><p>실시간 엔진 기반 1인칭 단편 공포 영상</p><strong>시간의 뒤틀림과 ‘또 다른 나’를 백룸의 공간·카메라·화면 왜곡으로 연결했습니다.</strong></div>
-   <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>Direction · Level Design · Camera · Edit</p><p><span>ENGINE</span>Unreal Engine</p><p><span>FORMAT</span>Found Footage</p><p><span>RUNTIME</span>101.47 sec</p></div>
+   ${window.renderCaseTemplateFacts({role:'Direction · Level Design · Camera · Edit',tools:'Unreal Engine · DaVinci Resolve 20',team:'1인 개인 프로젝트',output:'Found Footage Film · 101.47 sec'})}
   </header>
 
   <section class="ob-section ob-goal-scope" aria-label="Direction and Role">
-   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Direction + Role</h3></div><p>연출 목표와 제작 범위</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Overview + Contribution</h3></div><p>연출 목표와 개인 제작 범위</p></header>
    <div class="ob-design-goals">
     <article><span>01</span><h4>Narrative Loop</h4><p>공간뿐 아니라 시간도 뒤틀린 백룸과 ‘또 다른 나’를 중심 갈등으로 설정했습니다.</p></article>
     <article><span>02</span><h4>Camera Anxiety</h4><p>핸드헬드 카메라와 편집되지 않은 듯한 화면으로 촬영자의 불안을 전달했습니다.</p></article>
@@ -189,7 +194,7 @@ window.renderBackroomsCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Sequence Plan">
-   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Sequence Plan</h3></div><p>공간 설정 → 장면 전환 → 시각적 긴장</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Planning + Sequence</h3></div><p>공간 설정 → 장면 전환 → 시각적 긴장</p></header>
    <div class="br-story-core">
     <figure class="ob-media"><img src="assets/backrooms-02-banner.jpg" alt="반복되는 노란 벽과 기둥으로 구성된 백룸 공간" width="1280" height="722" loading="lazy"><figcaption>WORLD · 반복되는 공간 속에서 시간이 어긋나기 시작한다.</figcaption></figure>
     <div class="br-world-copy"><span>WORLD PREMISE</span><h4>공간과 시간축이 함께 뒤틀린 백룸</h4><p>촬영자는 버려진 스마트폰에서 자신과 같은 외형의 인물을 발견하고, 그 존재에게 쫓기기 시작합니다.</p><dl><div><dt>01</dt><dd><strong>촬영자</strong><small>루프의 시작점이자 끝점</small></dd></div><div><dt>02</dt><dd><strong>의문의 그림자</strong><small>다른 시간선의 자신</small></dd></div></dl></div>
@@ -203,7 +208,7 @@ window.renderBackroomsCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Environment Setup">
-   <header class="ob-section-head"><div><span class="ob-index">03</span><h3>Environment Setup</h3></div><p>Module → Scale → Light Control</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Core Breakdown</h3></div><p>Environment · Module → Scale → Light Control</p></header>
    <div class="br-process-grid">
     <article><figure class="ob-media"><img src="assets/backrooms-build-modules.webp" alt="서로 다른 크기의 백룸 박스 모듈" width="462" height="361" loading="lazy"><figcaption>01 · MODULAR KIT</figcaption></figure><h4>공간 단위 제작</h4><p>2×2, 3×3, 8×3 박스와 기둥을 조합할 수 있는 모듈로 제작했습니다.</p></article>
     <article><figure class="ob-media"><img src="assets/backrooms-build-scale.webp" alt="캐릭터를 기준으로 공간 크기를 확인하는 장면" width="468" height="349" loading="lazy"><figcaption>02 · HUMAN SCALE</figcaption></figure><h4>플레이어 스케일 확인</h4><p>1.8m 캐릭터를 기준으로 기둥과 공간 높이를 약 4m로 맞췄습니다.</p></article>
@@ -213,7 +218,7 @@ window.renderBackroomsCase=function(){
   </section>
 
   <section class="ob-section br-camera" aria-label="Previs and Camera Iteration">
-   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Previs + Camera Iteration</h3></div><p>Record → Block → Adjust → Final</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">03</span><h3>Iteration</h3></div><p>Previs + Camera · Record → Block → Adjust → Final</p></header>
    <div class="br-previs-row br-previs-primary">
     <figure class="ob-media br-record-card"><img src="assets/backrooms-previs-record.gif" alt="Unreal Engine Take Recorder에서 카메라 녹화를 시작하는 프리비즈 화면" width="417" height="307" loading="lazy"><figcaption><strong>01 / RECORD SETUP</strong><span>Take Recorder로 캐릭터와 카메라 데이터를 기록</span></figcaption></figure>
     <figure class="ob-media br-motion-card"><video class="br-motion-video" autoplay muted loop playsinline preload="metadata" poster="assets/backrooms-previs-fall-poster.jpg" aria-label="Sequencer 상단 뷰에서 캐릭터 낙하 궤적을 확인하는 프리비즈 영상"><source src="assets/backrooms-previs-fall.mp4" type="video/mp4"></video><figcaption><strong>02 / FALL BLOCKING</strong><span>상단 뷰에서 낙하 궤적·착지 위치·동작 타이밍 점검</span></figcaption></figure>
@@ -227,7 +232,7 @@ window.renderBackroomsCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Look Development">
-   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>Look Development</h3></div><p>Base Render → Look Tuning → Final Camera Look</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>Technical Implementation</h3></div><p>Look Development · Base Render → Final Camera Look</p></header>
    <div class="br-look-grid">
     <figure class="ob-media"><img src="assets/backrooms-look-base.webp" alt="후처리 전의 기본 백룸 레벨" width="415" height="263" loading="lazy"><figcaption><strong>BASE RENDER</strong><span>환경과 기본 조명</span></figcaption></figure>
     <figure class="ob-media"><img src="assets/backrooms-look-eye.webp" alt="노출과 안개, 대비를 조정한 1인칭 백룸 화면" width="415" height="248" loading="lazy"><figcaption><strong>LOOK TUNING</strong><span>노출 · 안개 · 대비</span></figcaption></figure>
@@ -238,7 +243,7 @@ window.renderBackroomsCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Final Sequence">
-   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Sequence</h3></div><p>101.47 sec · Representative Frames</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Results</h3></div><p>101.47 sec · Representative Frames</p></header>
    <div class="br-final-grid">
     <figure class="ob-media"><img src="assets/backrooms-shot-s1.webp" alt="문을 열고 백룸에 진입하는 최종 영상 프레임" width="577" height="270" loading="lazy"><figcaption><strong>00:05</strong><span>공간 진입</span></figcaption></figure>
     <figure class="ob-media"><img src="assets/backrooms-02-banner.jpg" alt="반복되는 노란 벽과 기둥 사이를 탐색하는 최종 영상 프레임" width="1280" height="722" loading="lazy"><figcaption><strong>00:15</strong><span>반복 공간 탐색</span></figcaption></figure>
@@ -259,11 +264,11 @@ window.renderHallgrimCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 03 / ENVIRONMENT DESIGN</p><h2 id="case-title">HALLGRIMSKIRKJA</h2><p>Environment Design · 3D Modeling · Technical Implementation</p></div>
    <figure class="ob-media ob-hero-media hg-hero-media"><img src="assets/hallgrim-01-hero.png" alt="설산과 용암 사이에 할그림스키르캬 교회가 놓인 Scene B 전경" width="1280" height="720"><figcaption>FINAL SCENE B · 교회를 기준점으로 설산과 용암 지형을 구성</figcaption></figure>
    <div class="ob-hero-summary"><p>2인 팀 환경 제작 프로젝트</p><strong>Scene A의 도시 블록아웃·건물 배치와 교회 정면 제작부터 Scene B 환경, A→B 전환 로직까지 연결했습니다.</strong></div>
-   <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>Environment Design · 3D Modeling · Technical Implementation</p><p><span>TOOLS</span>Blender · InstaMAT · Unreal Engine</p><p><span>TEAM</span>2-person Team</p><p><span>DELIVERABLE</span>Scene A → Scene B Playable Demo</p></div>
+   ${window.renderCaseTemplateFacts({role:'Environment Design · 3D Modeling · Technical Implementation',tools:'Blender · InstaMAT · Unreal Engine',team:'2인 팀 프로젝트',output:'Scene A → Scene B Playable Demo'})}
   </header>
 
   <section class="ob-section" aria-label="Direction and Contribution">
-   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Direction + Contribution</h3></div><p>환경의 대비와 개인 작업 범위</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Overview + Contribution</h3></div><p>환경의 대비와 개인·팀 작업 범위</p></header>
    <div class="ob-design-goals">
     <article><span>01</span><h4>Landmark</h4><p>낮은 건물군 사이에서 교회의 수직 실루엣이 공간의 기준점이 되도록 구성했습니다.</p></article>
     <article><span>02</span><h4>Environment Contrast</h4><p>평온한 도시와 설산·용암 지형의 대비로 장면 변화가 즉시 읽히게 했습니다.</p></article>
@@ -276,7 +281,7 @@ window.renderHallgrimCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Scene A Planning and Blockout">
-   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Scene A — Planning + Blockout</h3></div><p>실제 도시 관계 → 블록아웃 → 건물 배치</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Planning + Blockout</h3></div><p>Scene A · 실제 도시 관계 → 블록아웃 → 건물 배치</p></header>
    <div class="hg-reference-grid">
     <figure class="ob-media hg-desktop-planning"><img src="assets/hallgrim-03-reference-layout.png" alt="Google Maps 위성 사진, Blender 평면 구성, Unreal Scene A 배치를 나란히 비교한 자료" width="1563" height="506" loading="lazy"><figcaption><strong>SCENE A · SITE PLANNING</strong><span>Google Maps → Blender 평면 → Unreal 배치</span></figcaption></figure>
     <div class="hg-mobile-planning" aria-label="Scene A 계획 자료">
@@ -295,7 +300,7 @@ window.renderHallgrimCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Architecture and Materials">
-   <header class="ob-section-head"><div><span class="ob-index">03</span><h3>Architecture + Materials</h3></div><p>형태 → 비율 보정 → 표면 통일</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">03</span><h3>Iteration</h3></div><p>Architecture + Materials · 형태 → 비율 보정 → 표면 통일</p></header>
    <div class="hg-architecture-grid">
     <figure class="ob-media hg-model-sheet"><img src="assets/hallgrim-04-church-front.png" alt="Blender에서 제작한 할그림스키르캬 교회 정면과 평면 구조" width="933" height="659" loading="lazy"><figcaption><strong>CHURCH FRONT</strong><span>기둥 배열·첨탑·시계·출입부로 정면 실루엣 구성</span></figcaption></figure>
     <div class="hg-material-stack">
@@ -307,7 +312,7 @@ window.renderHallgrimCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Scene B Environment">
-   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Scene B Environment</h3></div><p>Sculpt → Route → Snow / Lava Material</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Core Breakdown</h3></div><p>Scene B Environment · Sculpt → Route → Snow / Lava Material</p></header>
    <figure class="ob-media hg-wide"><img src="assets/hallgrim-06-scene-b-aerial.png" alt="교회 주변에 설산과 용암 경로가 이어지는 Scene B 항공 전경" width="1280" height="720" loading="lazy"><figcaption><strong>ENVIRONMENT OVERVIEW</strong><span>교회를 기준점으로 산맥과 용암 경로를 연결</span></figcaption></figure>
    <div class="hg-scene-grid">
     <figure class="ob-media"><img src="assets/hallgrim-07-scene-b-player.png" alt="눈 덮인 경로에서 용암과 교회를 바라보는 플레이어 시점" width="1280" height="720" loading="lazy"><figcaption><strong>PLAYER ROUTE</strong><span>보행 시점에서 이동 공간과 위험 지형 확인</span></figcaption></figure>
@@ -317,7 +322,7 @@ window.renderHallgrimCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Scene Transition">
-   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>A → B Transition</h3></div><p>Trigger → State Change → Fade → Scene B</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>Technical Implementation</h3></div><p>A → B Transition · Trigger → State Change → Fade</p></header>
    <div class="hg-transition-grid">
     <figure class="ob-media hg-motion"><img src="assets/hallgrim-scene-change.gif" alt="블록아웃 단계에서 주변 환경과 하늘이 바뀌는 초기 전환 테스트" width="910" height="428" loading="lazy"><figcaption><strong>EARLY TEST</strong><span>블록아웃에서 환경 상태 변경 검증</span></figcaption></figure>
     <figure class="ob-media hg-motion"><img src="assets/hallgrim-fade.gif" alt="하늘이 어두워지고 산악 요소가 나타나는 환경 전환 연출" width="626" height="682" loading="lazy"><figcaption><strong>TRANSITION LOOK</strong><span>환경 변화와 화면 암전을 연결</span></figcaption></figure>
@@ -334,7 +339,7 @@ window.renderHallgrimCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Final Frames">
-   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Frames</h3></div><p>Scene A + Scene B · Final Environment</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Results</h3></div><p>Scene A + Scene B · Final Environment</p></header>
    <div class="br-final-grid hg-final-grid">
     <figure class="ob-media"><img src="assets/hallgrim-10-scene-a-final.png" alt="교회와 주변 도시 건물 배치가 함께 보이는 Scene A 최종 전경" width="775" height="436" loading="lazy"><figcaption><strong>SCENE A · MY SCOPE</strong><span>개인: 블록아웃·건물 배치 / 팀: 세부 지형·식생·프롭</span></figcaption></figure>
     <figure class="ob-media"><img src="assets/hallgrim-11-scene-b-lava-detail.png" alt="설산 사이로 용암 경로가 흐르는 Scene B 환경 디테일" width="696" height="391" loading="lazy"><figcaption><strong>LAVA ROUTE</strong><span>설산 사이의 용암 이동 경로</span></figcaption></figure>
@@ -352,11 +357,11 @@ window.renderMyHomeCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 04 / INTERIOR ENVIRONMENT ART</p><h2 id="case-title">MY HOME</h2><p>Environment Design · Prop &amp; Material · Unreal Engine</p></div>
    <figure class="ob-media ob-hero-media mh-hero-media"><img src="assets/myhome-05-hero-room1.png" alt="침대와 빈백, 체크 카펫이 함께 보이는 My Home Room 1 최종 장면" width="1127" height="747"><figcaption><strong>FINAL ROOM 1 · MY SCOPE</strong><span>공간 구성·프랍·재질·라이팅 전반</span></figcaption></figure>
    <div class="ob-hero-summary"><p>Team Project · 04.15–05.11</p><strong>대비되는 두 취향을 하나의 공간으로 연결하고, Room 1 제작부터 공간 통합과 영상 기능까지 구현했습니다.</strong></div>
-   <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>Room 1 Environment · Prop &amp; Material · Lighting</p><p><span>TOOLS</span>Blender · InstaMAT · Unreal Engine</p><p><span>TEAM</span>Team Project</p><p><span>PERIOD</span>04.15–05.11</p></div>
+   ${window.renderCaseTemplateFacts({role:'Room 1 Environment · Prop & Material · Lighting',tools:'Blender · InstaMAT · Unreal Engine',team:'2인 팀 프로젝트',output:'04.15–05.11 · Interior Environment'})}
   </header>
 
   <section class="ob-section" aria-label="Direction and Contribution">
-   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Direction + Contribution</h3></div><p>공간의 대비와 개인 작업 범위</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">01</span><h3>Overview + Contribution</h3></div><p>공간의 대비와 개인·팀 작업 범위</p></header>
    <div class="ob-design-goals">
     <article><span>01</span><h4>Contrast</h4><p>무채색 Room 1과 따뜻한 Room 2의 색·재료 대비를 분명하게 구성했습니다.</p></article>
     <article><span>02</span><h4>Lived-in Space</h4><p>휴식·작업 영역과 생활 소품을 함께 배치해 사용자의 취향이 읽히게 했습니다.</p></article>
@@ -375,7 +380,7 @@ window.renderMyHomeCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Concept and Layout">
-   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Concept + Layout</h3></div><p>Reference → Initial Layout → Final Layout</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">02</span><h3>Planning + Layout</h3></div><p>Reference → Initial Layout → Final Layout</p></header>
    <div class="mh-concept-grid">
     <figure class="ob-media mh-reference"><img src="assets/myhome-02-reference.jpg" alt="무채색 Room 1과 따뜻한 Room 2의 색과 소품 방향을 정리한 공동 기획 레퍼런스" width="1440" height="810" loading="lazy"><figcaption><strong>REFERENCE</strong><span>두 방의 취향·색·재료 대비</span></figcaption></figure>
     <div class="mh-layout-pair">
@@ -397,7 +402,7 @@ window.renderMyHomeCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Prop and Material Breakdown">
-   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Prop + Material Breakdown</h3></div><p>Intent → Process → Engine Result</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">04</span><h3>Core Breakdown</h3></div><p>Props + Materials · Intent → Process → Engine Result</p></header>
    <div class="mh-craft-grid">
     <article class="mh-craft-card">
      <div class="mh-craft-title"><span>01 / PROJECTOR</span><h4>영상 기능을 가진 핵심 프랍</h4><p>형태 제작과 UV·표면 작업 뒤, 영상 가장자리 블러와 깜빡임 머티리얼을 연결했습니다.</p></div>
@@ -431,7 +436,7 @@ window.renderMyHomeCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Lighting and Technical Implementation">
-   <header class="ob-section-head"><div><span class="ob-index">05</span><h3>Lighting + Technical Implementation</h3></div><p>Light Function · Video Material · Blueprint</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05A</span><h3>Technical Implementation</h3></div><p>Lighting · Light Function · Video Material · Blueprint</p></header>
    <div class="mh-tech-grid">
     <div class="mh-center-object">
      <figure class="ob-media mh-tech-feature"><img src="assets/myhome-26-center-light.png" alt="중앙 오브제의 색과 패턴이 바닥으로 이어지는 투영광 결과" width="870" height="733" loading="lazy"><figcaption><strong>CENTER OBJECT LIGHT</strong><span>오브제의 색과 패턴을 바닥까지 연결</span></figcaption></figure>
@@ -446,7 +451,7 @@ window.renderMyHomeCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Scene Integration">
-   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Scene Integration</h3></div><p>Room 1 + Room 2 · Final Retouch</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">05B</span><h3>Environment Implementation</h3></div><p>Scene Integration · Room 1 + Room 2 · Final Retouch</p></header>
    <div class="mh-integration-grid">
     <div class="mh-integration-main">
      <figure class="ob-media"><img src="assets/myhome-28-integration-top.jpg" alt="Room 1과 Room 2의 배치와 출입문 위치가 보이는 통합 공간 상부 시점" width="2037" height="1095" loading="lazy"><figcaption><strong>MERGED LAYOUT</strong><span>두 방의 배치·경계·출입문 정리</span></figcaption></figure>
@@ -461,7 +466,7 @@ window.renderMyHomeCase=function(){
   </section>
 
   <section class="ob-section" aria-label="Final Frames">
-   <header class="ob-section-head"><div><span class="ob-index">07</span><h3>Final Frames</h3></div><p>Room 1 · Integration · Final Environment</p></header>
+   <header class="ob-section-head"><div><span class="ob-index">06</span><h3>Final Results</h3></div><p>Room 1 · Integration · Final Environment</p></header>
    <div class="br-final-grid mh-final-grid">
     <figure class="ob-media"><img src="assets/myhome-04-layout-after.png" alt="침대와 책상, 빈백이 함께 보이는 Room 1 최종 전경" width="1007" height="786" loading="lazy"><figcaption><strong>ROOM 1 · WIDE</strong><span>휴식과 작업 영역의 관계</span></figcaption></figure>
     <figure class="ob-media"><img src="assets/myhome-05-hero-room1.png" alt="침대와 빈백, 체크 카펫이 보이는 Room 1 최종 장면" width="1127" height="747" loading="lazy"><figcaption><strong>REST AREA</strong><span>프랍·재질·라이팅 최종 결과</span></figcaption></figure>

@@ -47,7 +47,7 @@
   if(heroCopy){
    if(octopus.parentElement!==heroCopy)heroCopy.append(octopus);
    x=Math.max(14,heroCopy.clientWidth-rect.width-64);
-   y=18;
+   y=-Math.round(rect.height*.5);
   }else{
    x=window.innerWidth-rect.width-24;
    y=24;

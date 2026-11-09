@@ -19,6 +19,7 @@
  let angle=0;
  let spin=0;
  let active=false;
+ let roaming=false;
  let drag=null;
  let lastFrame=performance.now();
 
@@ -39,21 +40,35 @@
   y=clamp(y,edge,maxY);
  };
  const placeOnHero=()=>{
-  const {rect}=limits();
-  const heroRect=heroCopy?.getBoundingClientRect();
-  if(heroRect){
-   x=heroRect.right-rect.width-64;
-   y=heroRect.top-rect.height+18;
+  const rect=measure();
+  roaming=false;
+  octopus.classList.add('is-docked');
+  octopus.classList.remove('is-roaming');
+  if(heroCopy){
+   if(octopus.parentElement!==heroCopy)heroCopy.append(octopus);
+   x=Math.max(14,heroCopy.clientWidth-rect.width-64);
+   y=18;
   }else{
    x=window.innerWidth-rect.width-24;
    y=24;
   }
-  keepInside();
   vx=0;
   vy=0;
   angle=0;
   spin=0;
   active=false;
+  render();
+ };
+ const beginRoaming=()=>{
+  if(roaming)return;
+  const rect=octopus.getBoundingClientRect();
+  x=rect.left;
+  y=rect.top;
+  roaming=true;
+  octopus.classList.remove('is-docked');
+  octopus.classList.add('is-roaming');
+  document.body.append(octopus);
+  keepInside();
   render();
  };
  const cap=(value,max)=>clamp(value,-max,max);
@@ -125,8 +140,8 @@
    pointerId:event.pointerId,
    dx:event.clientX-rect.left,
    dy:event.clientY-rect.top,
-   lastX:x,
-   lastY:y,
+   lastX:rect.left,
+   lastY:rect.top,
    lastTime:performance.now(),
    velocityX:0,
    velocityY:0,
@@ -134,6 +149,7 @@
    inheritedY:vy,
    inheritedSpin:spin,
    inheritedActive:active,
+   startedDocked:!roaming,
    moved:false
   };
   vx=0;
@@ -150,6 +166,11 @@
   const nextX=event.clientX-drag.dx;
   const nextY=event.clientY-drag.dy;
   const dt=Math.max((now-drag.lastTime)/1000,.008);
+  const distance=Math.hypot(nextX-drag.lastX,nextY-drag.lastY);
+  if(drag.startedDocked&&!roaming){
+   if(distance<=2)return;
+   beginRoaming();
+  }
   const instantX=(nextX-drag.lastX)/dt;
   const instantY=(nextY-drag.lastY)/dt;
   drag.velocityX=drag.velocityX*.3+instantX*.7;
@@ -157,7 +178,7 @@
   drag.lastX=nextX;
   drag.lastY=nextY;
   drag.lastTime=now;
-  drag.moved=drag.moved||Math.hypot(nextX-x,nextY-y)>2;
+  drag.moved=drag.moved||distance>2;
   angle+=(nextX-x)*.32;
   x=nextX;
   y=nextY;
@@ -183,6 +204,8 @@
  };
  octopus.addEventListener('pointerup',finish);
  octopus.addEventListener('pointercancel',finish);
+ window.addEventListener('pointerup',finish);
+ window.addEventListener('pointercancel',finish);
  octopus.addEventListener('dblclick',()=>{
   placeOnHero();
   lastFrame=performance.now();
@@ -191,6 +214,7 @@
   const step=event.shiftKey?48:18;
   const moves={ArrowLeft:[-step,0],ArrowRight:[step,0],ArrowUp:[0,-step],ArrowDown:[0,step]};
   if(!moves[event.key])return;
+  beginRoaming();
   x+=moves[event.key][0];
   y+=moves[event.key][1];
   vx=moves[event.key][0]*8;
@@ -201,13 +225,19 @@
   render();
   event.preventDefault();
  });
- window.addEventListener('resize',()=>{keepInside();render()});
+ window.addEventListener('resize',()=>{
+  if(roaming){keepInside();render()}
+  else placeOnHero();
+ });
 
  if(dialog){
   new MutationObserver(()=>{
-   const parent=dialog.open?dialog:document.body;
+   const parent=roaming?(dialog.open?dialog:document.body):heroCopy;
    if(octopus.parentElement!==parent)parent.append(octopus);
-   requestAnimationFrame(()=>{keepInside();render()});
+   requestAnimationFrame(()=>{
+    if(roaming){keepInside();render()}
+    else placeOnHero();
+   });
   }).observe(dialog,{attributes:true,attributeFilter:['open']});
  }
 })();

@@ -1,8 +1,8 @@
 (()=>{
  const octopus=document.querySelector('#floating-octopus');
- const dialog=document.querySelector('#case-dialog');
+ const homeSurface=document.querySelector('#home .section-content');
  const heroCopy=document.querySelector('.main-copy');
- if(!octopus)return;
+ if(!octopus||!homeSurface)return;
 
  const edge=22;
  const gravity=430;
@@ -27,7 +27,7 @@
  const clamp=(value,min,max)=>Math.min(Math.max(value,min),Math.max(min,max));
  const limits=()=>{
   const rect=measure();
-  return {rect,maxX:Math.max(edge,window.innerWidth-rect.width-edge),maxY:Math.max(edge,window.innerHeight-rect.height-edge)};
+  return {rect,maxX:Math.max(edge,homeSurface.clientWidth-rect.width-edge),maxY:Math.max(edge,homeSurface.clientHeight-rect.height-edge)};
  };
  const render=()=>{
   octopus.style.setProperty('--octopus-x',`${Math.round(x)}px`);
@@ -62,12 +62,13 @@
  const beginRoaming=()=>{
   if(roaming)return;
   const rect=octopus.getBoundingClientRect();
-  x=rect.left;
-  y=rect.top;
+  const surfaceRect=homeSurface.getBoundingClientRect();
+  x=rect.left-surfaceRect.left+homeSurface.scrollLeft;
+  y=rect.top-surfaceRect.top+homeSurface.scrollTop;
   roaming=true;
   octopus.classList.remove('is-docked');
   octopus.classList.add('is-roaming');
-  document.body.append(octopus);
+  homeSurface.append(octopus);
   keepInside();
   render();
  };
@@ -230,14 +231,4 @@
   else placeOnHero();
  });
 
- if(dialog){
-  new MutationObserver(()=>{
-   const parent=roaming?(dialog.open?dialog:document.body):heroCopy;
-   if(octopus.parentElement!==parent)parent.append(octopus);
-   requestAnimationFrame(()=>{
-    if(roaming){keepInside();render()}
-    else placeOnHero();
-   });
-  }).observe(dialog,{attributes:true,attributeFilter:['open']});
- }
 })();

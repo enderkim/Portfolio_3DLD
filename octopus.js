@@ -141,8 +141,10 @@
    pointerId:event.pointerId,
    dx:event.clientX-rect.left,
    dy:event.clientY-rect.top,
-   lastX:rect.left,
-   lastY:rect.top,
+   startPointerX:event.clientX,
+   startPointerY:event.clientY,
+   lastPointerX:event.clientX,
+   lastPointerY:event.clientY,
    lastTime:performance.now(),
    velocityX:0,
    velocityY:0,
@@ -164,22 +166,23 @@
  octopus.addEventListener('pointermove',event=>{
   if(!drag||drag.pointerId!==event.pointerId)return;
   const now=performance.now();
-  const nextX=event.clientX-drag.dx;
-  const nextY=event.clientY-drag.dy;
+  const surfaceRect=homeSurface.getBoundingClientRect();
+  const nextX=event.clientX-surfaceRect.left-drag.dx;
+  const nextY=event.clientY-surfaceRect.top-drag.dy;
   const dt=Math.max((now-drag.lastTime)/1000,.008);
-  const distance=Math.hypot(nextX-drag.lastX,nextY-drag.lastY);
+  const totalDistance=Math.hypot(event.clientX-drag.startPointerX,event.clientY-drag.startPointerY);
   if(drag.startedDocked&&!roaming){
-   if(distance<=2)return;
+   if(totalDistance<=3)return;
    beginRoaming();
   }
-  const instantX=(nextX-drag.lastX)/dt;
-  const instantY=(nextY-drag.lastY)/dt;
+  const instantX=(event.clientX-drag.lastPointerX)/dt;
+  const instantY=(event.clientY-drag.lastPointerY)/dt;
   drag.velocityX=drag.velocityX*.3+instantX*.7;
   drag.velocityY=drag.velocityY*.3+instantY*.7;
-  drag.lastX=nextX;
-  drag.lastY=nextY;
+  drag.lastPointerX=event.clientX;
+  drag.lastPointerY=event.clientY;
   drag.lastTime=now;
-  drag.moved=drag.moved||distance>2;
+  drag.moved=drag.moved||totalDistance>3;
   angle+=(nextX-x)*.32;
   x=nextX;
   y=nextY;

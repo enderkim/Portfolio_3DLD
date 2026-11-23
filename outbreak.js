@@ -194,7 +194,7 @@ window.renderBackroomsCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 02 / REAL-TIME CINEMATIC</p><h2 id="case-title">THE BACKROOMS</h2><p>Found Footage Short Film · Unreal Engine</p></div>
    <figure class="ob-media ob-hero-media br-hero-media"><img src="assets/backrooms-01-hero.jpg" alt="노란 복도와 The Backrooms 타이틀이 보이는 최종 영상 프레임" width="1280" height="722"><figcaption>FINAL FILM · 반복되는 공간과 1인칭 카메라로 만든 파운드 푸티지</figcaption></figure>
    <div class="ob-hero-summary"><p>실시간 엔진 기반 1인칭 단편 공포 영상</p><strong>시간의 뒤틀림과 ‘또 다른 나’를 백룸의 공간·카메라·화면 왜곡으로 연결했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Direction · Level Design · Camera · Edit',tools:'Unreal Engine · DaVinci Resolve 20',start:'2026.05.11',duration:'2026.05.11 — 06.12 · 33 DAYS',team:'1인 개인 프로젝트',output:'Found Footage Film · 101.47 sec'})}
+   ${window.renderCaseTemplateFacts({role:'Direction · Level Design · Camera · Edit',tools:'Unreal Engine · DaVinci Resolve 20',start:'2026.06.24',duration:'2026.06.24 — 07.10 · 17 DAYS',team:'1인 개인 프로젝트',output:'Found Footage Film · 101.47 sec'})}
   </header>
 
   <section class="ob-section ob-goal-scope" aria-label="Direction and Role">
@@ -282,7 +282,7 @@ window.renderHallgrimCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 03 / ENVIRONMENT DESIGN</p><h2 id="case-title">HALLGRIMSKIRKJA</h2><p>Environment Design · 3D Modeling · Technical Implementation</p></div>
    <figure class="ob-media ob-hero-media hg-hero-media"><img src="assets/hallgrim-01-hero.png" alt="설산과 용암 사이에 할그림스키르캬 교회가 놓인 Scene B 전경" width="1280" height="720"><figcaption>FINAL SCENE B · 교회를 기준점으로 설산과 용암 지형을 구성</figcaption></figure>
    <div class="ob-hero-summary"><p>2인 팀 환경 제작 프로젝트</p><strong>Scene A의 도시 블록아웃·건물 배치와 교회 정면 제작부터 Scene B 환경, A→B 전환 로직까지 연결했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Environment Design · 3D Modeling · Technical Implementation',tools:'Blender · InstaMAT · Unreal Engine',start:'2026.06.24',duration:'2026.06.24 — 07.10 · 17 DAYS',team:'2인 팀 프로젝트',output:'Scene A → Scene B Playable Demo'})}
+   ${window.renderCaseTemplateFacts({role:'Environment Design · 3D Modeling · Technical Implementation',tools:'Blender · InstaMAT · Unreal Engine',start:'2026.05.11',duration:'2026.05.11 — 06.12 · 33 DAYS',team:'2인 팀 프로젝트',output:'Scene A → Scene B Playable Demo'})}
   </header>
 
   <section class="ob-section" aria-label="Direction and Contribution">

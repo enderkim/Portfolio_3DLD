@@ -70,9 +70,9 @@ window.projectCaseStudies={
  }
 };
 
-window.renderCaseTemplateFacts=function({role,tools,team,output}){
+window.renderCaseTemplateFacts=function({role,tools,start,duration,team,output}){
  const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- return `<div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(role)}</p><p><span>TOOLS</span>${safe(tools)}</p><p class="ob-team-fact"><span>TEAM</span>${safe(team)}</p><p><span>PERIOD / OUTPUT</span>${safe(output)}</p></div><nav class="ob-template-path" aria-label="공통 프로젝트 구성"><span>01 OVERVIEW</span><span>02 PLANNING</span><span>03 ITERATION</span><span>04 BREAKDOWN</span><span>05 IMPLEMENTATION</span><span>06 FINAL</span></nav>`;
+ return `<div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(role)}</p><p><span>TOOLS</span>${safe(tools)}</p><p><span>START</span>${safe(start)}</p><p><span>DURATION</span>${safe(duration)}</p><p class="ob-team-fact"><span>TEAM</span>${safe(team)}</p><p><span>OUTPUT</span>${safe(output)}</p></div><nav class="ob-template-path" aria-label="공통 프로젝트 구성"><span>01 OVERVIEW</span><span>02 PLANNING</span><span>03 ITERATION</span><span>04 BREAKDOWN</span><span>05 IMPLEMENTATION</span><span>06 FINAL</span></nav>`;
 };
 
 window.renderProjectVideoLinks=function(links){
@@ -89,7 +89,7 @@ window.renderOutbreakCase=function(p){
    <div class="ob-heading"><p class="case-kicker">PROJECT 01 / LEVEL DESIGN PORTFOLIO</p><h2 id="case-title">OUTBREAK</h2><p>Level Design · Environment Design · Unreal Engine 5</p></div>
    <figure class="ob-media ob-hero-media ob-hero-map"><img src="assets/outbreak-04-final-player.jpg" alt="폐허가 된 도심 도로를 통과하는 OutBreak 최종 플레이 화면" width="2560" height="1440"><figcaption>FINAL GAMEPLAY · 플레이어 시야에서 읽히는 이동 축과 도시 랜드마크</figcaption></figure>
    <div class="ob-hero-summary"><p>3인 스쿼드 익스트랙션 서바이벌 × 좀비 PvPvE</p><strong>소음이 좀비의 이동과 밀집도를 바꾸는 전장을 설계했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Level Design · Direction · Optimization · UI',tools:'Unreal Engine 5',team:'3인 팀 프로젝트',output:'Playable PvPvE Map · 기간 자료 추가 예정'})}
+   ${window.renderCaseTemplateFacts({role:'Level Design · Direction · Optimization · UI',tools:'Unreal Engine 5',start:'2026.07.13',duration:'2026.07.13 — 08.28 · 47 DAYS',team:'3인 팀 프로젝트',output:'Playable PvPvE Map'})}
   </header>
 
   <section class="ob-section ob-goal-scope" aria-label="Goal and Role">
@@ -194,7 +194,7 @@ window.renderBackroomsCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 02 / REAL-TIME CINEMATIC</p><h2 id="case-title">THE BACKROOMS</h2><p>Found Footage Short Film · Unreal Engine</p></div>
    <figure class="ob-media ob-hero-media br-hero-media"><img src="assets/backrooms-01-hero.jpg" alt="노란 복도와 The Backrooms 타이틀이 보이는 최종 영상 프레임" width="1280" height="722"><figcaption>FINAL FILM · 반복되는 공간과 1인칭 카메라로 만든 파운드 푸티지</figcaption></figure>
    <div class="ob-hero-summary"><p>실시간 엔진 기반 1인칭 단편 공포 영상</p><strong>시간의 뒤틀림과 ‘또 다른 나’를 백룸의 공간·카메라·화면 왜곡으로 연결했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Direction · Level Design · Camera · Edit',tools:'Unreal Engine · DaVinci Resolve 20',team:'1인 개인 프로젝트',output:'Found Footage Film · 101.47 sec'})}
+   ${window.renderCaseTemplateFacts({role:'Direction · Level Design · Camera · Edit',tools:'Unreal Engine · DaVinci Resolve 20',start:'2026.05.11',duration:'2026.05.11 — 06.12 · 33 DAYS',team:'1인 개인 프로젝트',output:'Found Footage Film · 101.47 sec'})}
   </header>
 
   <section class="ob-section ob-goal-scope" aria-label="Direction and Role">
@@ -282,7 +282,7 @@ window.renderHallgrimCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 03 / ENVIRONMENT DESIGN</p><h2 id="case-title">HALLGRIMSKIRKJA</h2><p>Environment Design · 3D Modeling · Technical Implementation</p></div>
    <figure class="ob-media ob-hero-media hg-hero-media"><img src="assets/hallgrim-01-hero.png" alt="설산과 용암 사이에 할그림스키르캬 교회가 놓인 Scene B 전경" width="1280" height="720"><figcaption>FINAL SCENE B · 교회를 기준점으로 설산과 용암 지형을 구성</figcaption></figure>
    <div class="ob-hero-summary"><p>2인 팀 환경 제작 프로젝트</p><strong>Scene A의 도시 블록아웃·건물 배치와 교회 정면 제작부터 Scene B 환경, A→B 전환 로직까지 연결했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Environment Design · 3D Modeling · Technical Implementation',tools:'Blender · InstaMAT · Unreal Engine',team:'2인 팀 프로젝트',output:'Scene A → Scene B Playable Demo'})}
+   ${window.renderCaseTemplateFacts({role:'Environment Design · 3D Modeling · Technical Implementation',tools:'Blender · InstaMAT · Unreal Engine',start:'2026.06.24',duration:'2026.06.24 — 07.10 · 17 DAYS',team:'2인 팀 프로젝트',output:'Scene A → Scene B Playable Demo'})}
   </header>
 
   <section class="ob-section" aria-label="Direction and Contribution">
@@ -376,7 +376,7 @@ window.renderMyHomeCase=function(){
    <div class="ob-heading"><p class="case-kicker">PROJECT 04 / INTERIOR ENVIRONMENT ART</p><h2 id="case-title">MY HOME</h2><p>Environment Design · Prop &amp; Material · Unreal Engine</p></div>
    <figure class="ob-media ob-hero-media mh-hero-media"><img src="assets/myhome-05-hero-room1.png" alt="침대와 빈백, 체크 카펫이 함께 보이는 My Home Room 1 최종 장면" width="1127" height="747"><figcaption><strong>FINAL ROOM 1 · MY SCOPE</strong><span>공간 구성·프랍·재질·라이팅 전반</span></figcaption></figure>
    <div class="ob-hero-summary"><p>Team Project · 04.15–05.11</p><strong>대비되는 두 취향을 하나의 공간으로 연결하고, Room 1 제작부터 공간 통합과 영상 기능까지 구현했습니다.</strong></div>
-   ${window.renderCaseTemplateFacts({role:'Room 1 Environment · Prop & Material · Lighting',tools:'Blender · InstaMAT · Unreal Engine',team:'2인 팀 프로젝트',output:'04.15–05.11 · Interior Environment'})}
+   ${window.renderCaseTemplateFacts({role:'Room 1 Environment · Prop & Material · Lighting',tools:'Blender · InstaMAT · Unreal Engine',start:'2026.04.15',duration:'2026.04.15 — 05.11 · 27 DAYS',team:'2인 팀 프로젝트',output:'Interior Environment'})}
   </header>
 
   <section class="ob-section" aria-label="Direction and Contribution">
@@ -512,7 +512,7 @@ window.renderProjectCase=function(p){
  return `<article class="ob-case">
   <header class="ob-hero"><div class="ob-heading"><p class="case-kicker">PROJECT ${safe(p.id)} / ${safe(p.category)}</p><h2 id="case-title">${safe(p.title)}</h2><p>${safe(p.subtitle)}</p></div>${media('hero',data.claim,'가장 강한 결과를 먼저 보여주는 대표 화면','ob-hero-media',p.image)}<p class="ob-hero-line">${safe(data.claim)}</p></header>
   <section class="ob-goal-role" aria-label="Goal and Role"><div><p class="ob-eyebrow">GOAL</p><h3>${safe(data.goalTitle)}</h3><p>${safe(data.goal)}</p></div><div><p class="ob-eyebrow">MY ROLE</p><p class="ob-role">${safe(p.role)}</p><p class="ob-small">${safe(p.tools)} · ${safe(p.period)} · ${safe(p.team)}</p><p class="ob-scope-note">${safe(data.scope)}</p></div></section>
-  <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(p.role)}</p><p><span>TOOLS</span>${safe(p.tools)}</p><p><span>DURATION</span>${safe(p.period)}</p><p><span>TEAM</span>${safe(p.team)}</p></div>
+  <div class="ob-facts" aria-label="프로젝트 핵심 정보"><p><span>ROLE</span>${safe(p.role)}</p><p><span>TOOLS</span>${safe(p.tools)}</p><p><span>START</span>${safe(p.start)}</p><p><span>DURATION</span>${safe(p.duration)}</p><p><span>TEAM</span>${safe(p.team)}</p><p><span>OUTPUT</span>${safe(p.output)}</p></div>
   <section class="ob-section" aria-label="Process">${heading('01','Process',data.process.map(item=>item[0]).join(' → '))}<div class="ob-process">${process}</div></section>
   <section class="ob-section" aria-label="Core Breakdown">${heading('02',data.breakdownTitle,data.breakdownSub)}<div class="ob-breakdown">${breakdown}</div></section>
   <section class="ob-section" aria-label="Before and After">${heading('03','Before / After','문제 → 수정 → 확인을 같은 시점으로 비교')}<div class="ob-compare"><div><h4>Before</h4>${media('before','수정 전','문제가 보이는 초기 화면')}</div><div><h4>After</h4>${media('after','수정 후','변경 사항이 보이는 최종 화면')}</div></div><div class="ob-observation"><p><span>문제</span>${safe(data.before[0])}</p><p><span>수정</span>${safe(data.before[1])}</p><p><span>확인</span>${safe(data.before[2])}</p></div></section>
